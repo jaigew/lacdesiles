@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} : House Use Information{% endblock title%}
+
+{% block mainimage %}{% endblock mainimage %}
+
+{% block centerbody %}
+<TR>
+	<TD COLSPAN=3> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=10 ALT=""></TD>
+</TR>
+<tr>
+	<td colspan="3">
+{% ifequal userTurnToSchedule "true" %}
+{% ifnotequal loggedInUser "" %}
+{% ifnotequal public "y"%}
+	<form name="schedule" method="POST" action="">
+		<input type="hidden" name="renterName" value="{{ loggedInUser }}">
+		<input type="hidden" name="renterEmail" value="{{ loggedInEmail }}">
+		{% if not rentalSaved %}
+		Name (will appear on schedule): {{ loggedInUser}}<br>
+		Cottage: <select name='houseName'>
+			<option value="bose">Bose House</option>
+			<option value="mink">Mink Point</option>
+			<option value="main">Main House</option>
+			<option value="island">Island</option>
+			</select><br>
+		Start Date: <select name='startDateSelect' onChange="onChangeDateSelect(this)">
+		  {{ startDatesSelect }}
+		</select>
+		End Date: <select name='endDateSelect' onChange="onChangeDateSelect(this)">
+		  {{ endDatesSelect }}
+		</select><br>
+		<input type="submit" value="Sign Up"> - 
+		{% if rne %}
+		
+		I'm not going up this year, 
+		<a href="/rental/emailnext/?rnn={{ rnn }}&rne={{ rne }}&rfe={{ rfe }}&rfn={{ rfn }}"> email {{ rnn }} </a> (next on the rotation)
+		<br>
+		{% endif %}
+		{% else %}
+		{% if rne %}
+		<hr><br>
+		<a href="/rental/emailnext/?rnn={{ rnn }}&rne={{ rne }}&rfe={{ rfe }}&rfn={{ rfn }}">Email {{ rnn }} (next on the rotation)</a>
+		<br>
+		
+		{% endif %}
+		{% if errorMsg %}
+		<p style="color:red">{{ errorMsg }}</p>
+		{% endif %}
+		{% endif %}
+		
+		
+	
+	</form>
+{% endifnotequal %}
+{% endifnotequal %}
+{% endifequal %}
+{% ifnotequal loggedInUser "" %}
+<hr>
+<table border=0 width="100%" cellpadding=0 cellspacing=0>
+	{{ dateHeaderRow }}
+	{{ minkRentals }}
+	{{ boseRentals }}
+    {{ islandRentals }}
+    {{ mainRentals }}
+<!--
+    <tr><td colspan=13 bgcolor='#B8B8B8'>&nbsp;</td></tr>
+    {{ dateHeaderRow }}
+-->
+</table>
+{% else %}
+	You must be logged in to see the schedule.
+{% endifnotequal %}
+	</td>
+</tr>
+
+<tr>
+<td>
+<hr>
+<p class="text"><br>
+{% if rotationList %}
+{% ifnotequal public "y"%}
+{{ rotationList }}
+{% endifnotequal %}
+{% endif %}
+</p>
+</td>
+<td valign="top">
+<hr>
+	<p class="text">
+<br>
+The weekly use rates for 2014 are as follows: 
+<br><br>
+Main house: US$ 1,300/week  /CN$1,420 <br>
+Island cottage: US$ 1,100/week /CN$1,200 <br>
+Bose cottage : US$ 800/week /CN$875 <br>
+Mink Point cottage: US$ 1,100/week /CN$1,200<br>
+
+(plus $100 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
+
+<br><br>
+</p>
+</td>
+</tr>
+
+{% endblock centerbody %}
+
+{% block rightimages %}
+{% endblock rightimages %}

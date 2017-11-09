@@ -1,0 +1,16 @@
+{% extends "admin_base.html" %}
+
+{% block mainbody %}
+
+<form name="settings" method="POST" action="" >
+
+	Year: <input name="year" value="{{ year }}"/><br>
+	First Saturday: <input name="startdate" value="{{ startdate }}"/><br>
+	Last Saturday: <input name="enddate" value="{{ enddate }}"/><br>
+	
+	<input type="submit" value="Save">
+	
+<form>
+
+
+{% endblock mainbody %} 

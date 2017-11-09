@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} : Cottages{% endblock title%}
+
+{% block mainimage %}{% endblock mainimage %}
+
+{% block mainbody %}<br>
+There are 4 cottages on the property:  
+<ul>
+	<li><a class="graytext" href="/cottages/main/">Main House</a>, 
+	<li><a class="graytext" href="/cottages/mink/">Mink Point</a>, 
+	<li>the <a class="graytext" href="/cottages/island/">Island</a>, and 
+	<li><a class="graytext" href="/cottages/bose/">Bose House</a>.</p>
+</ul>
+
+<a href="/images/scenes/sunset_1.jpg" rel="lightbox" title="Sunset">
+<img src="/images/scenes/sunset_1.jpg" height="75" alt="Sunset" rel="lightbox[general]" border=0/>
+</a>
+<a href="/images/scenes/sunset_2.jpg" rel="lightbox" title="Sunset">
+<img src="/images/scenes/sunset_2.jpg" height="75" alt="Sunset" rel="lightbox[general]" border=0/>
+</a>
+<a href="/images/scenes/sunset_3.jpg" rel="lightbox" title="Sunset">
+<img src="/images/scenes/sunset_3.jpg" height="75" alt="Sunset" rel="lightbox[general]" border=0/>
+</a>
+
+{% endblock mainbody %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} : Login{% endblock title%}
+
+{% block mainimage %}{% endblock mainimage %}
+
+{% block login %}
+	<form name="login" method="POST" action="">
+	<table>
+		<tr>
+			<td>Username: </td>
+			<td><input name="username" size="10"/></td>
+		</tr>
+		<tr>
+			<td>Password: </td>
+			<td><input type="password" name="password" size="10"/></td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="Login" ></td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	</form>
+{% endblock login %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block mainbody %}
+Please login in the left panel.
+{% endblock mainbody %}

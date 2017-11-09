@@ -1,0 +1,275 @@
+a:link {
+	text-decoration:none;
+}
+
+a:visited {
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+a:active {
+	text-decoration:underline;
+}
+
+.graytext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #707C8A;
+}
+
+.text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-indent: 1.5em;
+}
+
+
+.houseTitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	text-align: center;
+	font-weight:bold;
+	color: #707C8A;
+}
+
+.textlink {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #111111;
+}
+
+.style2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+
+body {
+	background-color: #F2F1F1;
+}
+
+.style3 {
+	color: #999999
+}
+
+.scheduleCell {
+	border-left: 2px solid black;
+	height: 30px;
+}
+
+/* MENU STYLES */
+/* first level */
+ul.menu {
+	float: left;
+	height: 100%;
+	margin: 20px 0;
+	padding: 0;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+	list-style: none;
+	background: transparent url(http://techblog.procurios.nl/l/nl/library/download/34538) repeat-x 0 0;
+}
+
+ul.menu li {
+	position: relative;
+	float: left;
+	line-height: 1.1;
+}
+
+ul.menu li a {
+	display: block;
+	width: auto;
+	padding: 10px;
+	text-decoration: none;
+	color: #7c7c7c;
+	background: transparent url(http://techblog.procurios.nl/l/nl/library/download/34540) no-repeat right 2px;
+}
+
+ul.menu li.last a {
+	background: transparent;
+}
+
+ul.menu li a.sub {
+	padding-right: 15px;
+	background: transparent url(http://techblog.procurios.nl/l/nl/library/download/34540) no-repeat right -30px;
+}
+
+ul.menu li:hover,
+ul.menu li.hover /* protofish */ {
+	background: transparent url(http://techblog.procurios.nl/l/nl/library/download/34538) repeat-x 0 -32px;
+}
+
+ul.menu li:hover a,
+ul.menu li.hover /* protofish */ a {
+	color: #000;
+}
+
+ul.menu li.active a {
+	color: #f15c30;
+}
+
+/* second level */
+ul.menu ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	top: 32px;
+	width: 168px;
+	border-top: 1px solid #d7d7d7;
+}
+
+/* resetting first level */
+ul.menu ul ul {
+	
+}
+
+ul.menu li:hover li,
+ul.menu li:hover li a,
+ul.menu li.hover /* protofish */ li,
+ul.menu li.hover /* protofish */ li a {
+	background: #fff;
+	color: #7c7c7c;
+}
+
+/* submenu markup */
+ul.menu li li {
+	width: 100%;
+	border-left: 1px solid #d7d7d7;
+	border-right: 1px solid #d7d7d7;
+}
+
+ul.menu li li.last {
+	border-bottom: 1px solid #d7d7d7;
+}
+
+ul.menu li li a {
+	padding: 5px 5px 5px 10px;
+}
+
+ul.menu li:hover li:hover a,
+ul.menu li.hover li.hover /* protofish */ a {
+	background: #f6f6f6;
+	color: #000;
+}
+
+ul.menu li:hover li.active a,
+ul.menu li.hover /* protofish */ li.active a {
+	color: #f15c30;
+}
+
+ul.menu li li a.sub {
+	padding-right: 15px;
+	background: url(http://techblog.procurios.nl/l/nl/library/download/34536) no-repeat 95% 50%;
+}
+
+ul.menu li:hover li:hover a.sub,
+ul.menu li.hover li.hover /* protofish */ a.sub {
+	background: #f6f6f6 url(http://techblog.procurios.nl/l/nl/library/download/34536) no-repeat 95% 50%;
+}
+
+/* third level */
+/* resetting second level */
+ul.menu ul ul{
+	top: -1px;
+	margin-left: 169px;
+	background: #fff;
+}
+
+ul.menu li:hover li:hover li,
+ul.menu li:hover li:hover li a, {
+ul.menu li.hover li.hover /* protofish */ li,
+ul.menu li.hover li.hover /* protofish */ li a
+	color: #7c7c7c;
+}
+
+/* subsubmenu markup */
+ul.menu li:hover li:hover li:hover a,
+ul.menu li.hover li.hover li.hover /* protofish */ a {
+	background: #e6e6e6;
+	color: #000;
+}
+
+ul.menu li:hover li:hover li.active a,
+ul.menu li.hover li.hover /* protofish */ li.active a {
+	color: #f15c30;
+}
+
+ul.menu li:hover li:hover li:hover a.sub,
+ul.menu li.hover li.hover li.hover /* protofish */ a.sub {
+	background: #e6e6e6 url(http://techblog.procurios.nl/l/nl/library/download/34536) no-repeat 95% 50%;
+}
+
+/* fourth level */
+/* resetting second level */
+ul.menu li:hover li:hover li:hover li,
+ul.menu li:hover li:hover li:hover li a,
+ul.menu li.hover li.hover li.hover /* protofish */ li,
+ul.menu li.hover li.hover li.hover /* protofish */ li a {
+	color: #7c7c7c;
+}
+
+/* subsubmenu markup */
+ul.menu li:hover li:hover li:hover li:hover a,
+ul.menu li.hover li.hover li.hover li.hover /* protofish */ a {
+	background: #ccc;
+	color: #000;
+}
+
+ul.menu li:hover li:hover li:hover li.active a,
+ul.menu li.hover li.hover li.hover /* protofish */ li.active a {
+	color: #f15c30;
+}
+
+ul.menu li:hover li:hover li:hover li a.sub,
+ul.menu li.hover li.hover li.hover /* protofish */ li a.sub {
+	background: #e6e6e6;
+}
+
+ul.menu li:hover li:hover li:hover li:hover a.sub,
+ul.menu li.hover li.hover li.hover li.hover /* protofish */ a.sub {
+	background: #ccc;
+}
+
+/* hiding fifth level */
+div#nav ul ul ul ul ul {
+	display: none;
+}
+
+/* show hide behaviour */
+ul.menu ul,
+ul.menu li:hover ul ul,
+ul.menu ul ul,
+ul.menu li:hover ul ul ul,
+ul.menu ul ul ul,
+ul.menu li:hover ul ul ul ul {
+	position: absolute;
+	left: -999em;
+}
+
+ul.menu li:hover ul,
+ul.menu li li:hover ul,
+ul.menu li li li:hover ul,
+ul.menu li li li li:hover ul {
+	left: -1px;
+	z-index: 999;
+}
+
+/* show hide behaviour with protofish */
+ul.menu li.hover ul ul,
+ul.menu li.hover ul ul ul,
+ul.menu li.hover ul ul ul ul {
+	position: absolute;
+	left: -999em;
+}
+
+ul.menu li.hover ul,
+ul.menu li li.hover ul,
+ul.menu li li li.hover ul,
+ul.menu li li li li.hover ul {
+	left: -1px;
+	z-index: 999;
+}

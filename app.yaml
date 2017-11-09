@@ -1,0 +1,42 @@
+runtime: python27
+api_version: 1
+threadsafe: false
+
+libraries:
+- name: django
+  version: "1.5"
+
+builtins:
+- django_wsgi: on
+
+handlers:
+- url: /images
+  static_dir: images
+ 
+- url: /styles
+  static_dir: styles
+ 
+- url: /script
+  static_dir: script
+  
+- url: /ckeditor
+  static_dir: ckeditor
+
+- url: /docs
+  static_dir: docs
+  
+- url: /.*
+  script: index.py
+
+skip_files:
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.php
+- ^(.*/)?.*\.asp
+- ^(.*/)?.*\.pack

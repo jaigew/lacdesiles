@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+
+{% block mainbody %}
+
+<div id="addeditrenterform" style="{{addeditstyle}}">
+
+<form name="renter" method="POST" action="" >
+
+	<input type=hidden name="renterId" value="{{ r.id }}"/>
+	Name: <input name="renterName" value="{{ r.name }}"/><br>
+	Email: <input name="renterEmail" value="{{ r.email }}"><br>
+	Color: <input class="color {hash:false} " name="renterColor" value="{{ r.color }}"><br>
+	Password: <input name="renterPassword" value="{{ r.password }}"><br>
+	Rotation Position: <input name="renterPosition" value="{{ r.rotation_pos }}"> (leave as -1 if not family)<br>
+	Family: <select name="renterFamily">
+		<option value=0>No</option>
+		<option value=1 
+		{% ifequal r.family 1 %} 
+			SELECTED 
+		{% endifequal %}
+		>Yes</option>
+		</select><br>
+	<input type="submit" value="Save">
+	
+<form>
+<hr>
+</div>
+<input type=button onClick="showhide('addeditrenterform')" value="Add Renter">
+<hr>
+{% autoescape off %}
+{{ renterList }}
+{% endautoescape %}
+{% endblock mainbody %} 

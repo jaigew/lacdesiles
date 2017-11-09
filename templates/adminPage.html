@@ -1,0 +1,36 @@
+{% extends "admin_base.html" %}
+
+{% block mainbody %}
+
+<div id="addeditpageform" style="{{addeditstyle}}">
+
+<form name="renter" method="POST" action="" >
+
+	Id: <input name="Id" value="{{ page.id }}"/><br>
+	Title: <input name="title" value="{{ page.title }}"/><br>
+	Body: <textarea name="body" cols="100" id="editor1" name="editor1" rows="10">{{ page.body }}</textarea><br>
+	
+			<script type="text/javascript">
+			//<![CDATA[
+
+				// This call can be placed at any point after the
+				// <textarea>, or inside a <head><script> in a
+				// window.onload event handler.
+
+				// Replace the <textarea id="editor"> with an CKEditor
+				// instance, using default configurations.
+				CKEDITOR.replace( 'editor1' );
+
+			//]]>
+			</script>
+	<input type="submit" value="Save">
+	
+<form>
+<hr>
+</div>
+<input type=button onClick="showhide('addeditpageform')" value="Add Page">
+<hr>
+<table>
+{{ pageList }}
+</table>
+{% endblock mainbody %} 

@@ -1,0 +1,149 @@
+﻿<html>
+<head>
+<title>{% block title %}Lac des Iles{% endblock title %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="keywords" content="Keywords here">
+<meta name="description" content="Mott Family Cottages">
+<meta name="Author" content="duncannondesign.com">
+<META NAME="robots" CONTENT="index, follow"> <!-- (Robot commands: All, None, Index, No Index, Follow, No Follow) -->
+<META NAME="revisit-after" CONTENT="30 days">
+<META NAME="distribution" CONTENT="global">
+<META NAME="rating" CONTENT="general">
+<META NAME="Content-Language" CONTENT="english">
+
+
+<script type="text/javascript" src="/script/lac_script.js"></script>
+<script type="text/javascript" src="/script/prototype.js"></script>
+<script type="text/javascript" src="/script/builder.js"></script>
+<script type="text/javascript" src="/script/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="/script/lightbox.js"></script> 
+
+<link rel="stylesheet" href="/styles/lightbox.css" type="text/css" media="screen" />
+
+<LINK REL=StyleSheet HREF="/styles/style.css" TYPE="text/css">
+
+
+
+</head>
+<BODY LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 >
+	<TABLE WIDTH=775 bgcolor="#FFFFFF" BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+		<TR>
+	    	<TD  colspan="4" valign="top">
+	    		<table width="775" border="0">
+            		<tr>
+                  		<td><a href="/"><img src="/images/lake_logo.gif" width=151 height=119 alt="" border=0></a></td>
+                  		<td><a href="/"><img src="/images/title.gif" width="619" height="95" border=0></a><br>
+                      	<img src="/images/subtitle.gif" width="619" height="36"></td>
+                	</tr>
+              	</table>
+	            <table width="775" border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="153"><a href="/"><img src="/images/home.gif" width="153" height="39" border="0"></a></td>
+						<td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="153"><a href="/cottages/"><img src="/images/cottages.gif" width="153" height="39" border="0"></a></td>
+	                    <td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="153"><a href="/local/"><img src="/images/local_area.gif" width="153" height="39" border="0"></a></td>
+	                    <td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="155"><a href="/rental/"><img src="/images/rent_info.jpg" width="155" height="39" border="0"></a></td>
+	                    <td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="153"><a href="/family/"><img src="/images/family.gif" width="153" height="39" border="0"></a></td>
+	                    <td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+	                    <td width="1"><img src="/images/white.gif" width="1" height="39"></td>
+                  	</tr>
+                  	<!--
+                  	<tr></tr>
+                  	<tr></tr>
+                  	-->
+				</table>
+				{% block mainimage %} 
+				<img src="/images/main_image.jpg" alt="Sunset Canoe">
+				{% endblock mainimage %}
+			</TD>
+		</TR>
+		{% block centerbody %}
+    	<TR>
+			<TD width="150" valign="top" style="padding-left:13; ">
+				<br>
+	      		<p class="graytext">
+	      		
+	      		{% block login %}
+		      	{% ifnotequal loggedInUser "" %}
+		      		Logged in as {{loggedInUser}}<br>
+		      		<a href="/login/?logout">Logout</a>
+		      	{% else %}
+		      		<IMG SRC="/images/left_col.gif" WIDTH=150 height="20" ALT="">
+		      		Not logged in
+		      		<a href="/login/?login">Login</a>
+		      	{% endifnotequal %}
+		      	{% endblock login %}
+		      	{% block menu %}
+			  	<p class="graytext"><img src="/images/cottages_left.gif" width="150" height="20"></p>
+			  	<p class="graytext">
+			  	<a class="graytext" href="/cottages/main/">Main House</a><br>
+			    <a class="graytext" href="/cottages/mink/">Mink Point</a><br>
+			    <a class="graytext" href="/cottages/island/">Island</a><br>
+			    <a class="graytext" href="/cottages/bose/">Bose House</a></p>
+				<p class="graytext"><img src="/images/info.gif" width="150" height="20"></p>
+				<a class="graytext" href="/rental/schedule/">Schedule</a><br>
+				<a class="graytext" href="/map/">Map</a><br>
+				<a class="graytext" href="/recreation/">Recreation</a><br>
+				{% endblock menu %}
+				<a class="graytext" href="/contact/">Contact</a></p>	  
+			</TD>
+			<TD width="1" valign="top" ><img src="/images/grey.gif" width=1 height=100%></TD> 
+			<TD width="625px" valign="top">
+			<TABLE BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+	          <TR>
+	            <TD COLSPAN=3> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=10 ALT=""></TD>
+	          </TR>
+	          <TR>
+	            <TD width="100%" valign="top" style="padding-left:13;padding-right:13 ">
+		            {% block mainbody %}
+{% autoescape off %}
+		            {{ content }}
+{% endautoescape %} 
+		            {% endblock mainbody %}            
+		        </TD>
+	            <TD valign="top">
+	            {% block rightimages %}
+	            <TABLE BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+	                <TR>
+	                  <TD colspan="-11"> 
+	                  <IMG SRC="/images/main_house_small.jpg" WIDTH=130 HEIGHT=94 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=6 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/island_small.jpg" WIDTH=130 HEIGHT=94 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/spacer.gif" WIDTH=130 HEIGHT=6 ALT=""></TD>
+	                </TR>
+					 <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/snow.jpg" WIDTH=130 HEIGHT=94 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/spacer.gif" WIDTH=130 HEIGHT=6 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/lac_overview.jpg" WIDTH=130 HEIGHT=94 ALT=""></TD>
+	                </TR>
+	                <TR>
+	                  <TD colspan="-11"> <IMG SRC="/images/spacer.gif" WIDTH=130 HEIGHT=6 ALT=""></TD>
+	                </TR>
+	            </TABLE>
+	            {% endblock rightimages %}
+	            </TD>
+	            <TD> <IMG SRC="/images/spacer.gif" WIDTH=10 HEIGHT=220 ALT=""></TD>
+	          </TR>
+	        </TABLE></TD>
+	    </TR>
+	    {% endblock centerbody %}
+		<TR>
+		  <TD height="25" colspan="3"><IMG SRC="/images/grey.gif" WIDTH=100% HEIGHT=1 ALT=""><div align="center"><span class="style3">&copy; 2011 </span></div></TD>
+		</TR>
+	</TABLE>
+</BODY>
+</HTML>

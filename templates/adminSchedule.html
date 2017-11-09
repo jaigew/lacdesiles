@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+
+{% block mainbody %}
+	<form name="schedule" method="POST" action="">
+		
+		Name (will appear on schedule): <input name="renterName" size="10" value=""/><br>
+		Email: <select name='renterEmail'>
+		  {{ renterEmailSelect }}
+		</select> 
+		
+		<!--<input name="renterEmail" value="">-->
+		<br>
+		Cottage: <select name='houseName'>
+			<option value="bose">Bose House</option>
+			<option value="mink">Mink Point</option>
+			<option value="main">Main House</option>
+			<option value="island">Island</option>
+			</select><br>
+		Start Date: <select name='startDateSelect' onChange="onChangeDateSelect(this)">
+{% autoescape off %}
+		  {{ startDatesSelect }}
+{% endautoescape %} 
+		</select>
+		End Date: <select name='endDateSelect' onChange="onChangeDateSelect(this)">
+{% autoescape off %}
+		  {{ endDatesSelect }}
+{% endautoescape %} 
+		</select><br>
+		<input type="submit" value="Save">
+	
+	</form>
+	
+	<hr>
+<table border=0 width="100%">
+{% autoescape off %}
+	{{ dateHeaderRow }}
+	{{ minkRentals }}
+	{{ boseRentals }}
+    {{ islandRentals }}
+    {{ mainRentals }}
+{% endautoescape %} 
+</table>
+
+{% endblock mainbody %} 
