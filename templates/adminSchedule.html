@@ -1,11 +1,23 @@
 {% extends "admin_base.html" %}
 
 {% block mainbody %}
+<script>
+    function updateName(selectList) {
+        //d = selectList.value;
+        var l = selectList.options[selectList.selectedIndex].label;
+        document.getElementById("renterName").value = l;
+        //alert(selectList);
+        //alert(l);
+    }
+</script>
+
 	<form name="schedule" method="POST" action="">
 		
-		Name (will appear on schedule): <input name="renterName" size="10" value=""/><br>
-		Email: <select name='renterEmail'>
+		Name (will appear on schedule): <input name="renterName" size="10" value="" id="renterName"/><br>
+		Email: <select name='renterEmail' id="renterEmail" onchange="updateName(this)">
+          {% autoescape off %}
 		  {{ renterEmailSelect }}
+          {% endautoescape %} 
 		</select> 
 		
 		<!--<input name="renterEmail" value="">-->

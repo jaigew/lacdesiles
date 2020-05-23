@@ -9,39 +9,174 @@
 	<TD COLSPAN=3> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=10 ALT=""></TD>
 </TR>
 <tr>
-	<td colspan="3">
+	<td colspan="3" style="padding-left:13;">
+        <script>
+            var startDate;
+            var endDate;
+
+            $(document).ready(function () {
+                var dateFormat = "mm/dd/yy";
+                var from = $("#startDate").datepicker({
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        minDate: new Date({{ year }}, 05, 01),
+                        maxDate: new Date({{ year }}, 10, 01),
+                        showOtherMonths: true,
+                        selectOtherMonths: true,
+                        beforeShowDay: function (date) {
+                            var sel = false;
+                            var cls = "";
+                            if (date.getDay() == 6) {
+                                sel = true;
+                            } else {
+                                sel = false;
+                            }
+                            //alert(startDate);
+                            if (startDate)
+                            {
+                                if (date >= startDate && date <= addDays(startDate, 7))
+                                {
+                                    cls = "ui-datepicker-current-day";
+                                }
+                            }
+                            return [sel, cls];
+                        },
+                        onSelect: function(dateSel) {
+                            startDate = dateSel;
+                            d = addDays(startDate, 7);
+                            //alert(d);
+                            to.datepicker("option", "minDate", d);
+                            //$(".eventfilter").trigger('change');
+                        }
+                    });
+
+                var to = $("#endDate").datepicker({
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        minDate: new Date({{ year }}, 05, 01),
+                        maxDate: new Date({{ year }}, 10, 01),
+                        beforeShowDay: function (date) {
+                            var sel = false;
+                            var cls = "";
+                            if (date.getDay() == 6) {
+                                sel = true;
+                            } else {
+                                sel = false;
+                            }
+                            if (startDate) {
+                                //alert(startDate);
+                                if (endDate) {
+                                    laterDate = new Date(endDate);
+                                }
+                                else {
+                                    laterDate = addDays(startDate, 7);
+                                }
+                                
+                                d1 = new Date(date);
+                                d2 = new Date(startDate);
+                                //alert(laterDate);
+                                //&& date <= laterDate
+                                //alert(date + " ?? " + startDate);
+                                if (d1.getTime() >= d2.getTime() && d1.getTime() < laterDate.getTime()) {
+                                    //alert(addDays(startDate, 7));
+                                    cls = "ui-state-default ui-state-active";
+                                }
+                            }
+                            return [sel, cls];
+
+                        },
+                        onSelect: function(dateSel, inst) {
+                            endDate = dateSel;
+                            //from.datepicker("option", "minDate", dateSel);
+                            //$(".eventfilter").trigger('change');
+                        }
+                });
+            
+            /*
+            if (date.getDay() == 6) {
+                return [true];
+            } else {
+                return [false];
+            }
+            */
+
+                var selectCurrentWeek = function () {
+                    window.setTimeout(function () {
+                        $('.startDate').find('.ui-datepicker-current-day a').addClass('ui-state-active')
+                    }, 1);
+                }
+                $('.startDate .ui-datepicker-calendar tr').live('mousemove', function () { $(this).find('td a').addClass('ui-state-hover'); });
+                $('.startDate .ui-datepicker-calendar tr').live('mouseleave', function () { $(this).find('td a').removeClass('ui-state-hover'); });
+            //});
+
+
+                function getDate(element) {
+                    var date;
+                    try {
+                        date = $.datepicker.parseDate(dateFormat, element.value);
+                    } catch (error) {
+                        date = null;
+                    }
+
+                    return date;
+                }
+                function addDays(date, days) {
+                    var result = new Date(date);
+                    result.setDate(result.getDate() + days);
+                    return result;
+                }
+            });
+    
+        </script>
 {% ifequal userTurnToSchedule "true" %}
 {% ifnotequal loggedInUser "" %}
 {% ifnotequal public "y"%}
 	<form name="schedule" method="POST" action="">
 		<input type="hidden" name="renterName" value="{{ loggedInUser }}">
-		<input type="hidden" name="renterEmail" value="{{ loggedInEmail }}">
-		Name (will appear on schedule): {{ loggedInUser}}<br>
-		Cottage: <select name='houseName'>
-			<option value="bose">Bose House</option>
-			<option value="mink">Mink Point</option>
-			<option value="main">Main House</option>
-			<option value="island">Island</option>
-			</select><br>
-		Start Date: <select name='startDateSelect' onChange="onChangeDateSelect(this)">
-{% autoescape off %}
-		  {{ startDatesSelect }}
-{% endautoescape %} 
-		</select>
-		End Date: <select name='endDateSelect' onChange="onChangeDateSelect(this)">
-{% autoescape off %}
-		  {{ endDatesSelect }}
-{% endautoescape %} 
-		</select><br>
-		<input type="submit" value="Sign Up"> -
+        <input type="hidden" name="renterEmail" value="{{ loggedInEmail }}">
+        <table>
+            <tr>
+                <td>
+                    <b>Name:</b>
+                </td>
+                <td>
+                    {{ loggedInUser}}
+                </td>
+            </tr>
+            <tr>
+                <td><b>Cottage:</b></td>
+                <td>
+                    <select name='houseName'>
+                        <option value="bose">Bose House</option>
+                        <option value="mink">Mink Point</option>
+                        <option value="main">Main House</option>
+                        <option value="island">Island</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="startDate"><b>From Saturday:</b></label></td>
+                <td><input type="text" id="startDate" name="startDate"></td>
+            </tr>
+            <tr>
+                <td><label for="endDate"><b>To Saturday:</b></label></td>
+                <td><input type="text" id="endDate" name="endDate"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="Sign Up" class="btn">Sign up</button></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br/>
+        
+		&nbsp;-&nbsp;
 		{% ifnotequal rne "" %}
 		<a href="mailto:{{ rne }}?Subject=Lac%20Des%20Iles%20-%20You%20are%20next" target="_top">Send Email to the next family member ({{ rnn }})</a>
 		{% endifnotequal %}
 		{% if errorMsg %}
 		<p style="color:red">{{ errorMsg }}</p>
-		{% endif %}
-
-
+        {% endif %}
 
 	</form>
 {% endifnotequal %}
@@ -69,7 +204,7 @@
 </tr>
 
 <tr>
-<td>
+<td style="padding-left:13; ">
 <hr>
 <p class="text"><br>
 {% if rotationList %}
@@ -81,18 +216,23 @@
 {% endif %}
 </p>
 </td>
-<td valign="top">
+<td valign="top" >
 <hr>
 	<p class="text">
 <br>
-The weekly use rates for 2016 are as follows:
+The weekly use rates for {{ year }} are:
 <br><br>
+        {% autoescape off %}
+        {{ rates }}
+        {% endautoescape %}
+        <!--
 Main house: US$ 1,300/week CN$1575<br>
 Island cottage: US$ 1,100/week CN$1350<br>
 Bose cottage : US$ 800/week CN$ 1000<br>
 Mink Point cottage: US$ 1,100/week  CN$1350<br>
+            -->
 <br>
-(plus $100 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
+(plus $125 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
 <br>
 
 (Note: we may have to adjust rates midyear if there is a major exchange rate change.)

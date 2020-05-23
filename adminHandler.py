@@ -114,8 +114,9 @@ class EditSettingsHandler(BaseHandler):
 		y = u.getYear()
 		startdate = u.getStartDate(y)
 		enddate = u.getEndDate(y)
+		rates = u.getRates()
 		
-		context ={'year':y, 'startdate':startdate, 'enddate':enddate}
+		context ={'year':y, 'startdate':startdate, 'enddate':enddate, 'rates':rates}
 		
 		u.render("adminSettings.html", context, self, True, "")
 		
@@ -269,17 +270,17 @@ class AddRentalHandler(BaseHandler):
 		logging.info(startDate)
 		endDate = u.getEndDate(year) 
 		#datetime(u.getYear(), 9, 24)
-        
 		startDates = u.getSaturdaySelects(u.getYear())
 		endDates = u.getSaturdaySelects(u.getYear())
 		
 		renterEmailSelect = u.getRenterSelect()
+		logging.info(renterEmailSelect)
 
 		dateHeaderRow = u.createDateHeaderRow(startDate, endDate)
-		boseRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'bose').order('-startDate'), startDate, endDate, "Bose House", self)
-		minkRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'mink').order('-startDate'), startDate, endDate, "Mink Point", self)
-		mainRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'main').order('-startDate'), startDate, endDate, "Main House", self)
-		islandRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'island').order('-startDate'), startDate, endDate, "Island", self)
+		boseRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'bose').order('-startDate'), 'bose', startDate, endDate, "Bose House", self)
+		minkRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'mink').order('-startDate'), 'mink', startDate, endDate, "Mink Point", self)
+		mainRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'main').order('-startDate'), 'main', startDate, endDate, "Main House", self)
+		islandRentalRow = u.createScheduleRow(Rental.all().filter('houseName = ', 'island').order('-startDate'), 'island', startDate, endDate, "Island", self)
 
 		context = {'userTurnToSchedule' : 'true', 'startDatesSelect' : startDates, 'endDatesSelect' : endDates, 
 				   'boseRentals': boseRentalRow, 'mainRentals':mainRentalRow, 'islandRentals':islandRentalRow, 

@@ -40,5 +40,4 @@ class Settings(db.Model):
 	year = db.IntegerProperty()
 	startDate = db.DateTimeProperty()
 	endDate = db.DateTimeProperty()
-    
-    
+	rates = db.StringProperty(multiline=True)
