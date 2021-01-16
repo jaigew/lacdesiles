@@ -127,8 +127,8 @@ class EditSettingsHandler(BaseHandler):
 	def post(self):
 		#u = Utilities()
 		self.response.out.write(self.request.get('year'))
-		db.delete(Settings.all())
-		self.response.out.write("deleted")
+		#db.delete(Settings.all())
+		#self.response.out.write("deleted")
 		settings = Settings()
 		settings.year = int(self.request.get('year'))
 		settings.startdate = datetime.strptime(self.request.get('startdate'), "%m/%d/%Y")
