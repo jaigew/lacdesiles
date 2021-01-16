@@ -1,115 +1,126 @@
 <html>
+
 <head>
-<title>ADMIN - {% block title %}Lac des Iles{% endblock title %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="keywords" content="Keywords here">
-<meta name="description" content="Mott Family Cottages">
-<meta name="Author" content="duncannondesign.com">
-<META NAME="robots" CONTENT="index, follow"> <!-- (Robot commands: All, None, Index, No Index, Follow, No Follow) -->
-<META NAME="revisit-after" CONTENT="30 days">
-<META NAME="distribution" CONTENT="global">
-<META NAME="rating" CONTENT="general">
-<META NAME="Content-Language" CONTENT="english">
+	<title>ADMIN - {% block title %}Lac des Iles{% endblock title %}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="keywords" content="Keywords here">
+	<meta name="description" content="Mott Family Cottages">
+	<meta name="Author" content="duncannondesign.com">
+	<META NAME="robots" CONTENT="index, follow">
+	<!-- (Robot commands: All, None, Index, No Index, Follow, No Follow) -->
+	<META NAME="revisit-after" CONTENT="30 days">
+	<META NAME="distribution" CONTENT="global">
+	<META NAME="rating" CONTENT="general">
+	<META NAME="Content-Language" CONTENT="english">
 
 
-<script type="text/javascript" src="/script/lac_script.js"></script>
-<script type="text/javascript" src="/script/prototype.js"></script>
-<script type="text/javascript" src="/script/builder.js"></script>
-<script type="text/javascript" src="/script/scriptaculous.js?load=effects,builder"></script>
-<script type="text/javascript" src="/script/lightbox.js"></script> 
-<script type="text/javascript" src="/script/prototype.js"></script>
-<script type="text/javascript" src="/script/protofish.js"></script>
-<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="/script/jscolor.js"></script>
+	<script type="text/javascript" src="/script/lac_script.js"></script>
+	<script type="text/javascript" src="/script/prototype.js"></script>
+	<script type="text/javascript" src="/script/builder.js"></script>
+	<script type="text/javascript" src="/script/scriptaculous.js?load=effects,builder"></script>
+	<script type="text/javascript" src="/script/lightbox.js"></script>
+	<script type="text/javascript" src="/script/prototype.js"></script>
+	<script type="text/javascript" src="/script/protofish.js"></script>
+	<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/script/jscolor.js"></script>
 
-<link rel="stylesheet" href="/styles/lightbox.css" type="text/css" media="screen" />
-<LINK REL=StyleSheet HREF="/styles/style.css" TYPE="text/css">
+	<link rel="stylesheet" href="/styles/lightbox.css" type="text/css" media="screen" />
+	<LINK REL=StyleSheet HREF="/styles/style.css" TYPE="text/css">
 
 </head>
-<BODY LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0 >
+
+<BODY LEFTMARGIN=0 TOPMARGIN=0 MARGINWIDTH=0 MARGINHEIGHT=0>
 	<TABLE WIDTH=775 bgcolor="#FFFFFF" BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
 		<TR>
-	    	<TD  colspan="4" valign="top">
-	    		<table width="775" border="0">
-            		<tr>
-                  		<td><a href="/"><img src="/images/lake_logo.gif" width=151 height=119 alt="" border=0></a></td>
-                  		<td><a href="/"><img src="/images/title.gif" width="619" height="95" border=0></a><br>
-                      	<img src="/images/subtitle.gif" width="619" height="36"></td>
-                	</tr>
-              	</table>
-	            <table width="775" border="0" cellpadding="0" cellspacing="0">
-                	<tr>
-<nav>
-	<ul id='menu-1' class='menu'>
-		<li><a class='sub' href='#'>House Usage</a>
-			<ul>
-				<li><a href='/admin/addRentals/'>Add</a></li>
-				<li><a href='/admin/editRentals/'>Delete</a></li>
-			</ul>
-		</li>
-		<li ><a class='sub' href='#'>Occupants</a>
-			<ul>
-				<li><a href='/admin/addRenters/'>Add/Edit</a></li>				
-			</ul>
-		</li>
-		<li><a class='sub' href='#'>Pages</a>
-			<ul>
-				<li><a href='/admin/editPage/'>Add/Edit</a></li>
-			</ul>
-		</li>
-		<li><a class='sub' href='#'>Maintenance</a>
-			<ul>
-				<li><a href='/admin/editSettings/'>Edit Settings</a></li>
-				<li><hr></li>
-				<li><a href='#'>Delete ALL Occupiers</a></li>
-				<li><a href='#'>Reset Occupiers</a></li>
-			</ul>
-		</li>
-	</ul>
-</nav>
+			<TD colspan="4" valign="top">
+				<table width="775" border="0">
+					<tr>
+						<td><a href="/"><img src="/images/lake_logo.gif" width=151 height=119 alt="" border=0></a></td>
+						<td><a href="/"><img src="/images/title.gif" width="619" height="95" border=0></a><br>
+							<img src="/images/subtitle.gif" width="619" height="36"></td>
+					</tr>
+				</table>
+				<table width="775" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<nav>
+							<ul id='menu-1' class='menu'>
+								<li><a class='sub' href='#'>House Usage</a>
+									<ul>
+										<li><a href='/admin/addRentals/'>Add</a></li>
+										<li><a href='/admin/editRentals/'>Delete</a></li>
+									</ul>
+								</li>
+								<li><a class='sub' href='#'>Occupants</a>
+									<ul>
+										<li><a href='/admin/addRenters/'>Add/Edit</a></li>
+									</ul>
+								</li>
+								<li><a class='sub' href='#'>Pages</a>
+									<ul>
+										<li><a href='/admin/editPage/'>Add/Edit</a></li>
+									</ul>
+								</li>
+								<li><a class='sub' href='#'>Maintenance</a>
+									<ul>
+										<li><a href='/admin/editSettings/'>Edit Settings</a></li>
+										<li>
+											<hr>
+										</li>
+										<li><a href='#'>Delete ALL Occupiers</a></li>
+										<li><a href='#'>Reset Occupiers</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
 
-<div style="text-align:right">
-	{% block login %}
-	{% ifnotequal loggedInUser "" %}
-		Logged in as {{loggedInUser}} &nbsp;&nbsp;<br>
-		<a href="/login/?logout">Logout</a>&nbsp;&nbsp;
-	{% else %}
-		<IMG SRC="/images/left_col.gif" WIDTH=150 height="20" ALT="">
-		Not logged in
-		<a href="/login/?login">Login</a>&nbsp;&nbsp;
-	{% endifnotequal %}
-	{% endblock login %}
-</div>
+						<div style="text-align:right">
+							{% block login %}
+							{% ifnotequal loggedInUser "" %}
+							Logged in as {{loggedInUser}} &nbsp;&nbsp;<br>
+							<a href="/login/?logout">Logout</a>&nbsp;&nbsp;
+							{% else %}
+							<IMG SRC="/images/left_col.gif" WIDTH=150 height="20" ALT="">
+							Not logged in
+							<a href="/login/?login">Login</a>&nbsp;&nbsp;
+							{% endifnotequal %}
+							{% endblock login %}
+						</div>
 
-                  	</tr>
+					</tr>
 				</table>
 			</TD>
 		</TR>
 		{% block centerbody %}
-    	<TR>
-			<TD width="1" valign="top" ><img src="/images/grey.gif" width=1 height=100%></TD> 
-			<TD width="625px" valign="top">
-			<TABLE BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
-	          <TR>
-	            <TD COLSPAN=3> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=10 ALT=""></TD>
-	          </TR>
-	          <TR>
-	            <TD width="100%" valign="top" style="padding-left:13;padding-right:13 ">
-		            {% block mainbody %}
-						{{ admin_body }} 
-		            {% endblock mainbody %}            
-		        </TD>
-	            <TD valign="top">
-	            
-	            </TD>
-	            <TD> <IMG SRC="/images/spacer.gif" WIDTH=10 HEIGHT=220 ALT=""></TD>
-	          </TR>
-	        </TABLE></TD>
-	    </TR>
-	    {% endblock centerbody %}
 		<TR>
-		  <TD height="25" colspan="3"><IMG SRC="/images/grey.gif" WIDTH=100% HEIGHT=1 ALT=""><div align="center"><span class="style3">&copy; 2011 </span></div></TD>
+			<TD width="1" valign="top"><img src="/images/grey.gif" width=1 height=100%></TD>
+			<TD width="625px" valign="top">
+				<TABLE BORDER=0 align="center" CELLPADDING=0 CELLSPACING=0>
+					<TR>
+						<TD COLSPAN=3> <IMG SRC="/images/spacer.gif" WIDTH=1 HEIGHT=10 ALT=""></TD>
+					</TR>
+					<TR>
+						<TD width="100%" valign="top" style="padding-left:13;padding-right:13 ">
+							{% block mainbody %}
+							{% autoescape off %}
+							{{ admin_body }}
+							{% endautoescape %}
+							{% endblock mainbody %}
+						</TD>
+						<TD valign="top">
+
+						</TD>
+						<TD> <IMG SRC="/images/spacer.gif" WIDTH=10 HEIGHT=220 ALT=""></TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		{% endblock centerbody %}
+		<TR>
+			<TD height="25" colspan="3"><IMG SRC="/images/grey.gif" WIDTH=100% HEIGHT=1 ALT="">
+				<div align="center"><span class="style3">&copy; 2011 </span></div>
+			</TD>
 		</TR>
 	</TABLE>
 </BODY>
+
 </HTML>
