@@ -29,6 +29,13 @@ class Utilities:
             return s.year
         else:
             return 2014
+    # def getSettingsID(self):
+    #     query = db.GqlQuery("SELECT rates FROM Settings")
+    #     s = query.get()
+    #     if s:
+    #         return s.rates
+    #     else:
+    #         return "Error loading rates."
 
     def getRates(self):
         query = db.GqlQuery("SELECT rates FROM Settings")
