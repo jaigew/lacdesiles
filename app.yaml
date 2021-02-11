@@ -5,6 +5,8 @@ threadsafe: false
 libraries:
 - name: django
   version: "1.5"
+- name: grpcio
+  version: 1.0.0
 
 builtins:
 - django_wsgi: on

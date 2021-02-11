@@ -139,9 +139,7 @@ class RentalHandler(BaseHandler):
             year = u.getYear()
         else:
             year = int(yearString)
-
-
-)
+            
         # datetime(u.getYear(), 9, 24)
         rates=u.getRates()
 

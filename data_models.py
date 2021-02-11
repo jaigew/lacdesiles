@@ -1,4 +1,8 @@
 from google.appengine.ext import db
+#from google.cloud.db import db
+
+#client = db.Client()
+
 
 class House(db.Model):
     id = db.IntegerProperty()
@@ -7,11 +11,12 @@ class House(db.Model):
     bathrooms = db.IntegerProperty()
     us_rental = db.FloatProperty()
     can_rental = db.FloatProperty()
-    desc = db.StringProperty(multiline=True)
-    picture_link = db.LinkProperty()
-    gallery_link = db.LinkProperty()
+    desc = db.StringProperty()
+    picture_link = db.StringProperty()
+    gallery_link = db.StringProperty()
     update_date = db.DateProperty()
-  
+
+
 class Renter(db.Model):
     id = db.IntegerProperty()
     name = db.StringProperty()
@@ -21,23 +26,27 @@ class Renter(db.Model):
     update_date = db.DateProperty()
     rotation_pos = db.IntegerProperty()
     family = db.IntegerProperty()
-    
+
+
 class Rental(db.Model):
-    houseName = db.StringProperty(multiline=False)
+    houseName = db.StringProperty()
     startDate = db.DateTimeProperty()
     endDate = db.DateTimeProperty()
-    renterName = db.StringProperty(multiline=False)
-    renterEmail = db.StringProperty(multiline=False)
+    renterName = db.StringProperty()
+    renterEmail = db.StringProperty()
     renterId = db.IntegerProperty()
     updateDate = db.DateTimeProperty(auto_now_add=True)
-    
+
+
 class Page(db.Model):
     id = db.IntegerProperty()
     title = db.StringProperty()
     body = db.TextProperty()
-    
+
+
 class Settings(db.Model):
-	year = db.IntegerProperty()
-	startDate = db.DateTimeProperty()
-	endDate = db.DateTimeProperty()
-	rates = db.StringProperty(multiline=True)
+    year = db.IntegerProperty()
+    startDate = db.DateTimeProperty()
+    endDate = db.DateTimeProperty()
+    rates = db.StringProperty(multiline=True)
+    keyName = db.StringProperty()
