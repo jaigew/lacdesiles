@@ -130,18 +130,11 @@ class RentalHandler(BaseHandler):
     def get(self):
         logging.debug('GET Request - rental')
         u = Utilities()
-
         today = datetime.today()
         # logging.info(today.year)
-        year = 0
-        yearString = self.request.get("y")
-        if yearString == "":
-            year = u.getYear()
-        else:
-            year = int(yearString)
-            
+        year = u.getYear()        
         # datetime(u.getYear(), 9, 24)
-        rates=u.getRates()
+        rates = u.getRates()
 
         context={'rates': rates, 'year': year}
         u.render('rental.html', context, self, True, "rental/")
