@@ -109,31 +109,11 @@ class EditSettingsHandler(BaseHandler):
 
     def showSettings(self):
 
-<<<<<<< HEAD
         u = Utilities()
         y = u.getYear()
         startdate = u.getStartDate(y)
         enddate = u.getEndDate(y)
         rates = u.getRates()
-=======
-        #key = ndb.Key("LacDesIlesSiteSettings")
-        key = "settings"
-        settings = Settings.get_or_insert(key)
-
-        u = Utilities()
-        #y = u.getYear()
-        y = settings.year
-
-        #startdate = u.getStartDate(y)
-        sd = settings.startDate
-        startdate = date.strftime(sd, "%Y-%m-%d")
-        #enddate = u.getEndDate(y)
-        ed = settings.endDate
-        enddate = date.strftime(ed, "%Y-%m-%d")
-
-        #rates = u.getRates()
-        rates = settings.rates
->>>>>>> 774661c64282d8ea924885bd6b22bb84ab3e66d1
 
         context = {'year': y, 'startdate': startdate,
                    'enddate': enddate, 'rates': rates}
@@ -145,7 +125,6 @@ class EditSettingsHandler(BaseHandler):
         self.showSettings()
 
     def post(self):
-<<<<<<< HEAD
         #u = Utilities()
         self.response.out.write(self.request.get('year'))
         # db.delete(Settings.all())
@@ -160,26 +139,6 @@ class EditSettingsHandler(BaseHandler):
             self.request.get('enddate'), "%m/%d/%Y")
         settings.put()
         self.response.out.write("saved")
-=======
-        u = Utilities()
-        # self.response.out.write(self.request.get('year'))
-        # db.delete(Settings.all())
-        # self.response.out.write("deleted")
-
-        key = "settings"
-        settings = Settings.get_or_insert(key)
-
-        settings.year = int(self.request.get('year'))
-        settings.startDate = datetime.strptime(
-            self.request.get('startdate'), "%Y-%m-%d")
-        # self.response.out.write(self.request.get('startdate'))
-        # self.response.out.write(settings.startdate)
-        settings.endDate = datetime.strptime(
-            self.request.get('enddate'), "%Y-%m-%d")
-        settings.rates = self.request.get('rates')
-        settings.put()
-        # self.response.out.write("saved")
->>>>>>> 774661c64282d8ea924885bd6b22bb84ab3e66d1
         self.showSettings()
 
 
