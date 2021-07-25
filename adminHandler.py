@@ -109,23 +109,11 @@ class EditSettingsHandler(BaseHandler):
 
     def showSettings(self):
 
-        #key = ndb.Key("LacDesIlesSiteSettings")
-        key = "settings"
-        settings = Settings.get_or_insert(key)
-
         u = Utilities()
-        #y = u.getYear()
-        y = settings.year
-
-        #startdate = u.getStartDate(y)
-        sd = settings.startDate
-        startdate = date.strftime(sd, "%Y-%m-%d")
-        #enddate = u.getEndDate(y)
-        ed = settings.endDate
-        enddate = date.strftime(ed, "%Y-%m-%d")
-
-        #rates = u.getRates()
-        rates = settings.rates
+        y = u.getYear()
+        startdate = u.getStartDate(y)
+        enddate = u.getEndDate(y)
+        rates = u.getRates()
 
         context = {'year': y, 'startdate': startdate,
                    'enddate': enddate, 'rates': rates}
@@ -137,24 +125,20 @@ class EditSettingsHandler(BaseHandler):
         self.showSettings()
 
     def post(self):
-        u = Utilities()
-        # self.response.out.write(self.request.get('year'))
+        #u = Utilities()
+        self.response.out.write(self.request.get('year'))
         # db.delete(Settings.all())
         # self.response.out.write("deleted")
-
-        key = "settings"
-        settings = Settings.get_or_insert(key)
-
+        settings = Settings()
         settings.year = int(self.request.get('year'))
-        settings.startDate = datetime.strptime(
-            self.request.get('startdate'), "%Y-%m-%d")
-        # self.response.out.write(self.request.get('startdate'))
-        # self.response.out.write(settings.startdate)
-        settings.endDate = datetime.strptime(
-            self.request.get('enddate'), "%Y-%m-%d")
-        settings.rates = self.request.get('rates')
+        settings.startdate = datetime.strptime(
+            self.request.get('startdate'), "%m/%d/%Y")
+        self.response.out.write(self.request.get('startdate'))
+        self.response.out.write(settings.startdate)
+        settings.enddate = datetime.strptime(
+            self.request.get('enddate'), "%m/%d/%Y")
         settings.put()
-        # self.response.out.write("saved")
+        self.response.out.write("saved")
         self.showSettings()
 
 

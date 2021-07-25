@@ -130,23 +130,30 @@ class RentalHandler(BaseHandler):
     def get(self):
         logging.debug('GET Request - rental')
         u = Utilities()
-        u.render('rental.html', {}, self, True, "rental/")
+        today = datetime.today()
+        # logging.info(today.year)
+        year = u.getYear()        
+        # datetime(u.getYear(), 9, 24)
+        rates = u.getRates()
+
+        context={'rates': rates, 'year': year}
+        u.render('rental.html', context, self, True, "rental/")
 
     def post(self):
-        u = Utilities()
-        u.render('rental.html', {}, self, login_required=True)
+        u=Utilities()
+        u.render('rental.html', {}, self, login_required = True)
 
 
 class RecreationHandler(BaseHandler):
 
     def get(self):
         logging.debug('GET Request')
-        u = Utilities()
-        u.render('recreation.html', {}, self, login_required=False)
+        u=Utilities()
+        u.render('recreation.html', {}, self, login_required = False)
 
     def post(self):
-        u = Utilities()
-        u.render('recreation', {}, self, login_required=False)
+        u=Utilities()
+        u.render('recreation', {}, self, login_required = False)
 
 
 class ClearDataHandler(webapp2.RequestHandler):
@@ -162,21 +169,21 @@ class ClearDataHandler(webapp2.RequestHandler):
 
 class EmailNextHandler(BaseHandler):
     def get(self):
-        renter_finished_name = self.request.get('rfn')
-        renter_finished_email = self.request.get('rfe')
-        renter_next_name = self.request.get('rnn')
-        renter_next_email = self.request.get('rne')
+        renter_finished_name=self.request.get('rfn')
+        renter_finished_email=self.request.get('rfe')
+        renter_next_name=self.request.get('rnn')
+        renter_next_email=self.request.get('rne')
 
-        #renter_next_email = "gewing@gewing.com"
-        renter_finished_email = renter_finished_email + \
+        # renter_next_email = "gewing@gewing.com"
+        renter_finished_email=renter_finished_email + \
             ",gewing@gmail.com,bmott.top@gmail.com"
 
-        mail.send_mail(sender="Lac Des Iles Web <gewing@gmail.com>",
-                       to=renter_next_email,
-                       cc=renter_finished_email,
-                       subject="Lac Des Iles Rental - You're Next!",
-                       body="""You're next!  """ + renter_finished_name + """ just finished selecting their times so you are next.  Please
-visit the site at http://lac-des-iles.appspot.com/ and sign in with your email address (""" + renter_next_email + """) and the password 
+        mail.send_mail(sender = "Lac Des Iles Web <gewing@gmail.com>",
+                       to = renter_next_email,
+                       cc = renter_finished_email,
+                       subject = "Lac Des Iles Rental - You're Next!",
+                       body = """You're next!  """ + renter_finished_name + """ just finished selecting their times so you are next.  Please
+visit the site at http://lac-des-iles.appspot.com/ and sign in with your email address (""" + renter_next_email + """) and the password
 you received earlier (the Island's proper name).  Please make your choice as soon as possible to keep the rotation running smoothly.
 
 Email Greg at gewing@gewing.com if you have any trouble with the site.
@@ -211,15 +218,15 @@ class ScheduleHandler(BaseHandler):
         endDates = u.getSaturdaySelects(year)
 
         startDate = u.getStartDate(yearString)
-        #datetime(u.getYear(), 6, 2)
+        # datetime(u.getYear(), 6, 2)
         logging.info(startDate)
         endDate = u.getEndDate(yearString)
         logging.info(endDate)
-        #datetime(u.getYear(), 9, 24)
+        # datetime(u.getYear(), 9, 24)
         rates = u.getRates()
         logging.info(rates)
 
-        #rentals = Rental.all()
+        # rentals = Rental.all()
         # for r in rentals:
         #	logging.info("delete " + r.houseName)
         #	r.delete()
@@ -243,9 +250,9 @@ class ScheduleHandler(BaseHandler):
 
         rental = Rental.all().filter('renterEmail = ', u.getLoggedInEmail(self)
                                      ).filter('startDate > ', datetime(year, 1, 1))
-        #rental = query.get()
+        # rental = query.get()
 
-        #rental = u.getRenterScheduledByEmail(rfe)
+        # rental = u.getRenterScheduledByEmail(rfe)
         logging.log(logging.INFO, '** count = ' + str(rental.count()))
         if rental.count() > 0:
             rentalSaved = True
@@ -266,7 +273,7 @@ class ScheduleHandler(BaseHandler):
         logging.info(rotationList)
 
         dateFilter = datetime(year, 1, 1)
-        #dateFilter = "2018-01-01T00:00:00.00000-05:00"
+        # dateFilter = "2018-01-01T00:00:00.00000-05:00"
         logging.info(dateFilter)
 
         dateHeaderRow = u.createDateHeaderRow(startDate, endDate)
@@ -303,7 +310,7 @@ class ScheduleHandler(BaseHandler):
         islandRentalRow = u.createScheduleRow(
             currentRentals, houseName, startDate, endDate, "Island", self, public)
 
-        #logging.info("boseRentalRow = " + boseRentalRow)
+        # logging.info("boseRentalRow = " + boseRentalRow)
 
         context = {'userTurnToSchedule': 'true', 'startDatesSelect': startDates,
                    'endDatesSelect': endDates, 'boseRentals': boseRentalRow, 'mainRentals': mainRentalRow,
@@ -348,7 +355,7 @@ class ScheduleHandler(BaseHandler):
             # rental doesn't exist so reset sDate and save rental
             sDate = datetime.strptime(
                 self.request.get('startDate'), "%m/%d/%Y")
-            #sDate.time = "00:00:00"
+            # sDate.time = "00:00:00"
             while sDate < eDate:
                 r = Rental()
                 r.houseName = houseName

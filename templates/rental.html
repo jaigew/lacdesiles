@@ -8,14 +8,22 @@
 
 <p class="text">
     <br>
-    The weekly use rates for 2018 are as follows:
+    The weekly use rates for {{ year }} are:
+    <br><br>
+    {% autoescape off %}
+    {{ rates }}
+    {% endautoescape %}
+
+    <!--
+        The weekly use rates for 2018 are as follows:
     <br><br>
     Main house: US$ 1,300/week CN$1525<br>
     Island cottage: US$ 1,100/week CN$1300<br>
     Bose cottage : US$ 800/week CN$ 950<br>
     Mink Point cottage: US$ 1,100/week CN$1300<br>
+    -->
     <br>
-    (plus $100 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
+    (plus $125 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
     <br>
 
     (Note: we may have to adjust rates midyear if there is a major exchange rate change.)
