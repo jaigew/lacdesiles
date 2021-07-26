@@ -12,6 +12,14 @@ builtins:
 - django_wsgi: on
 
 handlers:
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
+- url: /googleaf9c0c71f5a7bf57.html
+  static_files: static/googleaf9c0c71f5a7bf57.html
+  upload: static/googleaf9c0c71f5a7bf57.html
+
 - url: /images
   static_dir: images
  
@@ -26,7 +34,7 @@ handlers:
 
 - url: /docs
   static_dir: docs
-  
+
 - url: /.*
   script: index.py
 

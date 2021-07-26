@@ -1,6 +1,9 @@
 User-agent: *
 Disallow: /
 
+User-agent: *
+Disallow: /cottages/
+
 User-agent: Googlebot
 User-agent: AdsBot-Google
 Disallow: /
