@@ -20,8 +20,7 @@
                     changeMonth: true,
                     numberOfMonths: 1,
                     minDate: new Date({{ year }}, 05, 01),
-                    maxDate: new Date({{ year }
-            }, 10, 01),
+                    maxDate: new Date({{ year }}, 10, 01),
                 showOtherMonths: true,
                     selectOtherMonths: true,
                         beforeShowDay: function (date) {
@@ -47,7 +46,7 @@
                 to.datepicker("option", "minDate", d);
                 //$(".eventfilter").trigger('change');
             }
-                    });
+                });
 
             var to = $("#endDate").datepicker({
                 changeMonth: true,
@@ -155,11 +154,11 @@
                 </tr>
                 <tr>
                     <td><label for="startDate"><b>From Saturday:</b></label></td>
-                    <td><input type="text" id="startDate" name="startDate"></td>
+                    <td><input type="text" id="startDate" name="startDate" placeholder="MM/DD/YYYY"></td>
                 </tr>
                 <tr>
                     <td><label for="endDate"><b>To Saturday:</b></label></td>
-                    <td><input type="text" id="endDate" name="endDate"></td>
+                    <td><input type="text" id="endDate" name="endDate" placeholder="MM/DD/YYYY"></td>
                 </tr>
                 <tr>
                     <td><button type="submit" value="Sign Up" class="btn">Sign up</button></td>
