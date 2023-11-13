@@ -38,7 +38,7 @@ class Utilities:
     #         return "Error loading rates."
 
     def getRates(self):
-        query = db.GqlQuery("SELECT rates FROM Settings")
+        query = db.GqlQuery("SELECT * FROM Settings")
         s = query.get()
         if s:
             return s.rates
@@ -46,6 +46,11 @@ class Utilities:
             return "Error loading rates."
 
     def getStartDate(self, year):
+
+        query = db.GqlQuery("SELECT startDate FROM Settings")
+        s = query.get()
+        return s.startDate
+        '''
         if year == "":
             query = db.GqlQuery("SELECT startDate FROM Settings")
             s = query.get()
@@ -59,6 +64,7 @@ class Utilities:
                 sDate = sDate + span
 
             return sDate
+        '''
 
     def getEndDate(self, year):
         if year == "":
@@ -266,7 +272,7 @@ class Utilities:
         span = timedelta(days=1)
 
         # logging.info(date.weekday(sDate))
-        while date.weekday(sDate) <= 4:
+        while date.weekday(sDate) < 5:
             # logging.info(date.weekday(sDate))
             sDate = sDate + span
 

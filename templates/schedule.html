@@ -19,8 +19,9 @@
                 var from = $("#startDate").datepicker({
                     changeMonth: true,
                     numberOfMonths: 1,
-                    minDate: new Date({{ year }}, 05, 01),
-                    maxDate: new Date({{ year }}, 10, 01),
+                    minDate: new Date({{year}}, 05, 01),
+                    maxDate: new Date({{year}
+            }, 10, 01),
                 showOtherMonths: true,
                     selectOtherMonths: true,
                         beforeShowDay: function (date) {
@@ -51,8 +52,8 @@
             var to = $("#endDate").datepicker({
                 changeMonth: true,
                 numberOfMonths: 1,
-                minDate: new Date({{ year }}, 05, 01),
-                maxDate: new Date({{ year }}, 10, 01),
+                minDate: new Date({{year}}, 05, 01),
+                maxDate: new Date({{year}}, 10, 01),
             beforeShowDay: function (date) {
                 var sel = false;
                 var cls = "";
@@ -103,8 +104,8 @@
                     $('.startDate').find('.ui-datepicker-current-day a').addClass('ui-state-active')
                 }, 1);
             }
-            $('.startDate .ui-datepicker-calendar tr').live('mousemove', function () { $(this).find('td a').addClass('ui-state-hover'); });
-            $('.startDate .ui-datepicker-calendar tr').live('mouseleave', function () { $(this).find('td a').removeClass('ui-state-hover'); });
+            $('.startDate .ui-datepicker-calendar tr').live('mousemove', function () {$(this).find('td a').addClass('ui-state-hover');});
+            $('.startDate .ui-datepicker-calendar tr').live('mouseleave', function () {$(this).find('td a').removeClass('ui-state-hover');});
             //});
 
 
@@ -167,8 +168,6 @@
             </table>
 
             <br />
-
-            &nbsp;-&nbsp;
             {% ifnotequal rne "" %}
             <!---<a href="mailto:{{ rne }}?Subject=Lac%20Des%20Iles%20-%20You%20are%20next" target="_top">Send Email to the next family member ({{ rnn }})</a>--->
             {% endifnotequal %}
@@ -202,7 +201,7 @@
 </tr>
 
 <tr>
-    <td style="padding-left:13; ">
+    <td style="padding-left:13;vertical-align:top">
         <hr>
         <p class="text"><br>
             {% if rotationList %}
@@ -229,8 +228,6 @@ Island cottage: US$ 1,100/week CN$1350<br>
 Bose cottage : US$ 800/week CN$ 1000<br>
 Mink Point cottage: US$ 1,100/week  CN$1350<br>
             -->
-            <br>
-            (plus $125 cleaning fee for Main, Island and Mink Point cottages and $75 for Bose cottage)<br>
             <br>
 
             (Note: we may have to adjust rates midyear if there is a major exchange rate change.)
