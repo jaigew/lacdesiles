@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 import data_models
 from data_models import Rental, Renter, Page, Settings
+import logging
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
@@ -12,6 +13,7 @@ from google.appengine.ext import db
 #from google.cloud import ndb
 
 from datetime import date
+#from dateutil import parser
 import webapp2
 from webapp2_extras import sessions
 
@@ -109,10 +111,11 @@ class EditSettingsHandler(BaseHandler):
 
     def showSettings(self):
 
+        logging.info("showing setting info")
         u = Utilities()
         y = u.getYear()
-        startdate = u.getStartDate(y)
-        enddate = u.getEndDate(y)
+        startdate = datetime.strftime(u.getStartDate(y), "%Y-%m-%d")
+        enddate = datetime.strftime(u.getEndDate(y), "%Y-%m-%d")
         rates = u.getRates()
 
         context = {'year': y, 'startdate': startdate,
@@ -129,16 +132,31 @@ class EditSettingsHandler(BaseHandler):
         self.response.out.write(self.request.get('year'))
         # db.delete(Settings.all())
         # self.response.out.write("deleted")
-        settings = Settings()
+        query = db.GqlQuery("SELECT * FROM Settings")
+        settings = query.get()
+        logging.info(settings)
+        #settings = Settings.get("Key(Settings, 'settings')")
         settings.year = int(self.request.get('year'))
-        settings.startdate = datetime.strptime(
-            self.request.get('startdate'), "%m/%d/%Y")
-        self.response.out.write(self.request.get('startdate'))
-        self.response.out.write(settings.startdate)
-        settings.enddate = datetime.strptime(
-            self.request.get('enddate'), "%m/%d/%Y")
+        sdate = datetime.strptime(
+            self.request.get('startdate'), '%Y-%m-%d')
+        settings.startdate = datetime(
+            sdate.year, sdate.month, sdate.day, 0, 0, 0, 0)
+        # settings.startdate =
+        #settings.startdate = parser.parse(self.request.get('startdate'))
+        logging.info(self.request.get('startdate'))
+        logging.info(settings.startdate)
+        logging.info(settings.enddate)
+        edate = datetime.strptime(
+            self.request.get('enddate'), '%Y-%m-%d')
+        settings.enddate = datetime(
+            edate.year, edate.month, edate.day, 0, 0, 0, 0)
+        logging.info(self.request.get('enddate'))
+        logging.info(settings.enddate)
+        # settings.enddate = datetime.strptime(
+        #    self.request.get('enddate'), '%Y-%m-%dT00:00:00.000Z')
+        #settings.enddate = parser.parse(self.request.get('enddate'))
         settings.put()
-        self.response.out.write("saved")
+        logging.info("saved")
         self.showSettings()
 
 

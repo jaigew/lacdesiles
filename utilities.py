@@ -67,12 +67,17 @@ class Utilities:
         '''
 
     def getEndDate(self, year):
+        query = db.GqlQuery("SELECT endDate FROM Settings")
+        s = query.get()
+        return s.endDate
+        '''
         if year == "":
             query = db.GqlQuery("SELECT endDate FROM Settings")
             s = query.get()
             return s.endDate
         else:
             return datetime(int(year), 9, 10)
+        '''
 
     def getSessionValue(self, request, key):
         logging.info("getting session value for " + key)
